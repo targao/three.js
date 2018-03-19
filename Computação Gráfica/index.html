@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>USCS - Introdução ao three.js</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Henrique Targão"/>
+    <meta name="description" content="USCS - Three.js - Computação Gráfica"/>
+    <meta name="keywords" content="THREE.js, Vertices, Faces"/>
+		<script src="lib/build/three.min.js"></script>
+		<script src="direita.js"></script>
+		<script src="esquerda.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html, body {
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+
+	var scene = new THREE.Scene();
+	var camera = new THREE.PerspectiveCamera(160, window.innerWidth / window.innerHeight, 0.1, 1000);
+	var renderer = new THREE.WebGLRenderer();
+
+	renderer.setSize(window.innerWidth, window.innerHeight);
+
+	document.body.appendChild(renderer.domElement);
+
+var triangleMaterial = new THREE.MeshBasicMaterial({
+		vertexColors:THREE.FaceColors,
+		side:THREE.DoubleSide,
+		wireframe:false
+	});	
+
+	var triangleMesh = new THREE.Mesh(triangleGeometry, triangleMaterial);
+
+	triangleMesh.position.set(0.0, -21.6, 0.0);
+
+  scene.add(triangleMesh);
+  
+  var triangleMaterial2 = new THREE.MeshBasicMaterial({
+		vertexColors:THREE.FaceColors,
+		side:THREE.DoubleSide,
+		wireframe:false
+	});	
+
+	var triangleMesh2 = new THREE.Mesh(triangleGeometry2, triangleMaterial2);
+
+	triangleMesh2.position.set(0.0, -21.6, 0.0);
+
+	scene.add(triangleMesh2);
+
+	camera.position.z = 3.82;
+	
+	renderer.render(scene, camera);
+
+    </script>
+  </body>
+</html>
